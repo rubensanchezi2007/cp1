@@ -68,7 +68,8 @@ pipeline {
             steps {
                 unstash 'resultsRest'
                 unstash 'resultsUnit'
-               junit 'result*.xml'
+                junit 'result*.xml'
+                cleanWs()
             }
             
         }
