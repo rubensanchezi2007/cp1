@@ -8,7 +8,7 @@ pipeline {
                         label 'built-in'
                     }
             steps {
-               git branch: 'develop', url: 'https://github.com/rubensanchezi2007/cp1.git'
+               git 'https://github.com/rubensanchezi2007/cp1'
                stash includes: '**', name: 'cp1' 
             }
         }
