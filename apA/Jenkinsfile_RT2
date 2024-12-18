@@ -68,13 +68,15 @@ pipeline {
                         label 'built-in'
                     }
             steps {
-                bat '''
-                     echo %WORKSPACE%
-                '''
-                unstash 'resultsRest'
-                unstash 'resultsUnit'
-                junit 'result*.xml'
-                cleanWs()
+                catchError(buildResult: 'UNSTABLE', stageResult:'FAILURE'){
+                    bat '''
+                         echo %WORKSPACE%
+                    '''
+                    unstash 'resultsRest'
+                    unstash 'resultsUnit'
+                    junit 'result*.xml'
+                    cleanWs()
+                }
             }
             
         }
