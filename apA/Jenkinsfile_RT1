@@ -47,8 +47,9 @@ pipeline {
         stage('Results') {
             steps {
                junit 'result*.xml'
-               deleteDir()
+               step([$class: 'WsCleanup'])
             }
+            
             
         }
 
