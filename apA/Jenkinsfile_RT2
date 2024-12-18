@@ -75,6 +75,7 @@ pipeline {
                     unstash 'resultsRest'
                     unstash 'resultsUnit'
                     junit 'result*.xml'
+                    cleanWs()
                 }
             }
             
