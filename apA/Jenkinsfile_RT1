@@ -14,12 +14,11 @@ pipeline {
             parallel {
                 stage('Unit') {
                     steps {
-                        catchError(buildResult: 'UNSTABLE', stageResult:'FAILURE'){
+					
                             bat '''
                                 SET PYTHONPATH=%WORKSPACE%
                                 python -m pytest --junitxml=result-unit.xml test\\unit
-                            '''
-                        }
+                            '''                   
                     }
                     
                 }
